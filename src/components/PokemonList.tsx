@@ -38,22 +38,23 @@ const PokemonList = () => {
   if (err) return <div>{err}</div>;
 
   return (
-    <div className="p-7 bg-gray-800 min-h-screen">
-      <p className="font-bold m-10 text-center text-xl text-white">
+    <div className="p-10 bg-gray-800 min-h-screen">
+      <p className="font-bold m-10 text-center text-2xl text-white">
         포켓몬 도감
       </p>
-      <ul className="grid grid-cols-5 gap-5 text-white">
+      <ul className="grid grid-cols-5 gap-10 text-white">
         {pokemons.map((pokemon) => (
           <li
-            className="border-solid border rounded border-grey p-4 flex flex-col items-center"
+            className="bg-gray-900 border-solid border-2 rounded-lg border-gray-700 p-7 flex flex-col items-center"
             key={pokemon.id}
           >
             <img
-              className="p-5 bg-white border-solid border rounded-lg border-grey mb-2 animate-glow"
+              className="w-40 h-40  p-5 bg-white border-solid border rounded-lg border-black mb-2 animate-glow"
               src={pokemon.sprites.front_default}
+              alt={pokemon.name}
             />
-            <p className="text-sm">No : {pokemon.id}</p>
-            <p>{pokemon.korean_name}</p>
+            <p className="text-xs mt-3 mb-1">No . {pokemon.id}</p>
+            <p className="text-lg">{pokemon.korean_name}</p>
           </li>
         ))}
       </ul>
