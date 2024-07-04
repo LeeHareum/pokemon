@@ -1,19 +1,10 @@
 "use client";
 
 import axios from "axios";
+import { Pokemon } from "@/types/pokemon";
 import { useEffect, useState } from "react";
-
-type Pokemon = {
-  id: number;
-  name: string;
-  korean_name: string;
-  height: number;
-  weight: number;
-  sprites: { front_default: string };
-  types: { type: { name: string; korean_name: string } }[];
-  abilities: { ability: { name: string; korean_name: string } }[];
-  moves: { move: { name: string; korean_name: string } }[];
-};
+import Link from "next/link";
+import Image from "next/image";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -39,22 +30,33 @@ const PokemonList = () => {
 
   return (
     <div className="p-10 bg-gray-800 min-h-screen">
-      <p className="font-bold m-10 text-center text-2xl text-white">
+      <p className="font-bold m-4 sm:m-10 text-center text-xl sm:text-2xl text-white">
         포켓몬 도감
       </p>
-      <ul className="grid grid-cols-5 gap-10 text-white">
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 text-white">
         {pokemons.map((pokemon) => (
           <li
-            className="bg-gray-900 border-solid border-2 rounded-lg border-gray-700 p-7 flex flex-col items-center"
+            className="bg-gray-900 border-solid border-2 rounded-lg border-gray-700 p-4 sm:p-7 flex flex-col items-center"
             key={pokemon.id}
           >
-            <img
-              className="w-40 h-40  p-5 bg-white border-solid border rounded-lg border-black mb-2 animate-glow"
-              src={pokemon.sprites.front_default}
-              alt={pokemon.name}
-            />
-            <p className="text-xs mt-3 mb-1">No . {pokemon.id}</p>
-            <p className="text-lg">{pokemon.korean_name}</p>
+            <Link href={`/pokemon/${pokemon.id}`}>
+              <div className="cursor-pointer max-w-2xl mx-auto transform transition duration-500 hover:scale-105">
+                <Image
+                  className="sm:w-30 sm:h-30 p-3 sm:p-5 bg-white border-solid border rounded-lg border-black mb-2 animate-glow"
+                  src={pokemon.sprites.front_default}
+                  alt={pokemon.name}
+                  priority
+                  width={180}
+                  height={180}
+                />
+                <p className="text-xs mt-3 mb-1 text-center">
+                  No . {pokemon.id}
+                </p>
+                <p className="text-base sm:text-lg text-center">
+                  {pokemon.korean_name}
+                </p>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
