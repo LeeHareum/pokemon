@@ -1,18 +1,15 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "next.config.js",
-      "use": "@vercel/next"
+      "src": "src/app/**/*.ts",
+      "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/pokemons/(.*)",
-      "dest": "/api/pokemons/$1"
-    },
-    {
-      "src": "/pokemon/(.*)",
-      "dest": "/pokemon/$1"
+      "source": "/pokemon/:id",
+      "destination": "/pokemon/[id]/page"
     }
   ]
 }
