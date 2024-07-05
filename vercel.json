@@ -1,0 +1,18 @@
+{
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/pokemons/(.*)",
+      "dest": "/api/pokemons/$1"
+    },
+    {
+      "src": "/pokemon/(.*)",
+      "dest": "/pokemon/$1"
+    }
+  ]
+}
