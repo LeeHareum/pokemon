@@ -7,8 +7,9 @@ import { Pokemon, PokemonDetailProps } from "@/types/pokemon";
 const fetchPokemonDetails = async (id: string): Promise<Pokemon | null> => {
   try {
     const response = await axios.get(
-      `https://pokemon-5o26abwd1-leehareums-projects.vercel.app/pokemon/${id}` // 배포링크
+      `https://pokemon-5o26abwd1-leehareums-projects.vercel.app/${id}` // 배포링크
     );
+    console.log(`ssssss===${id}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching pokemon details:", error);
