@@ -51,7 +51,11 @@ const PokemonDetailPage = async ({ params }: PokemonDetailProps) => {
             </h1>
             <p className="mt-1 text-gray-500">
               타입:{" "}
-              {pokemonDetails.types.map((t) => t.type.korean_name).join(", ")}
+              {pokemonDetails.types
+                .map(
+                  (t: { type: { korean_name: string } }) => t.type.korean_name
+                )
+                .join(", ")}
             </p>
             <p className="mt-1 text-gray-500">
               키: {pokemonDetails.height / 10}m
