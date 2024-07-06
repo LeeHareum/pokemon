@@ -7,7 +7,7 @@ import { Pokemon, PokemonDetailProps } from "@/types/pokemon";
 const fetchPokemonDetails = async (id: string): Promise<Pokemon | null> => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/pokemons/${id}`
+      `http://https://pokemon-zeta-beige.vercel.app/api/pokemons/${id}` // 배포링크
     );
     return response.data;
   } catch (error) {
