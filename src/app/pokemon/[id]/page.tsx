@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import axios from "axios";
 import Link from "next/link";
-import { Pokemon, PokemonDetailProps } from "@/types/pokemon";
+import { PokemonDetailProps } from "@/types/pokemon";
+import { fetchPokemonDetails } from "@/lib/fetchPokemonDetails";
 
-const fetchPokemonDetails = async (id: string): Promise<Pokemon | null> => {
-  try {
-    const response = await axios.get(
-      `https://pokemon-5o26abwd1-leehareums-projects.vercel.app/api/pokemons/${id}` // 배포링크
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching pokemon details:", error);
-    return null;
-  }
-};
+// const fetchPokemonDetails = async (id: string): Promise<Pokemon | null> => {
+//   try {
+//     const response = await axios.get(
+//       `https://pokemon-5o26abwd1-leehareums-projects.vercel.app/api/pokemons/${id}` // 배포링크
+//     );
+//     return response.data;
+//   } catch (error) {
+//     console.error("Error fetching pokemon details:", error);
+//     return null;
+//   }
+// };
 
 const PokemonDetailPage = async ({ params }: PokemonDetailProps) => {
   const pokemonDetails = await fetchPokemonDetails(params.id);
