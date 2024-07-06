@@ -1,4 +1,4 @@
-const LoadingSpinner = () => {
+export const LoadingSpinnerBlack = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-16 h-16 border-4 border-black border-dashed rounded-full animate-spin"></div>
@@ -6,4 +6,10 @@ const LoadingSpinner = () => {
   );
 };
 
-export default LoadingSpinner;
+export const LoadingSpinnerWhite = () => {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-16 h-16 border-4 border-white border-dashed rounded-full animate-spin"></div>
+    </div>
+  );
+};

@@ -5,7 +5,7 @@ import { Pokemon } from "@/types/pokemon";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import LoadingSpinner from "./LoadingSpinner";
+import { LoadingSpinnerBlack, LoadingSpinnerWhite } from "./LoadingSpinner";
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
@@ -51,7 +51,7 @@ const PokemonList = () => {
     }
   }, [loading, hasNextPage]);
 
-  if (loading && pokemons.length === 0) return <LoadingSpinner />;
+  if (loading && pokemons.length === 0) return <LoadingSpinnerBlack />;
   if (err) return <div>{err}</div>;
   if (pokemons.length === 0) return <div>포켓몬 데이터가 없습니다.</div>;
 
@@ -94,7 +94,7 @@ const PokemonList = () => {
             </li>
           ))}
       </ul>
-      {loading && <div className="mt-10 text-center text-white">로딩중...</div>}
+      {loading && <LoadingSpinnerWhite />}
       {!hasNextPage && (
         <div className="mt-10 text-center text-white">
           더 이상 불러올 포켓몬이 없습니다.
