@@ -24,6 +24,7 @@ const PokemonList = () => {
       const newPokemons = response.data.data;
       setPokemons((prevPokemons) => [...prevPokemons, ...newPokemons]);
       setHasNextPage(response.data.hasNextPage);
+      console.log(response.data);
     } catch (error) {
       setErr("데이터 가져오기에 실패했습니다.");
     } finally {
@@ -75,14 +76,19 @@ const PokemonList = () => {
                     index === pokemons.length - 1 ? lastPokemonElementRef : null // 마지막 포켓몬 요소 참조 추가
                   }
                 >
-                  <Image
-                    className="sm:w-30 sm:h-30 p-3 sm:p-5 bg-white border-solid border rounded-lg border-black mb-2 animate-glow"
-                    src={pokemon.sprites.front_default}
-                    alt={pokemon.name}
-                    priority
-                    width={180}
-                    height={180}
-                  />
+                  <div className="w-44 h-44 bg-white border-solid border rounded-lg border-black mb-2 animate-glow flex items-center justify-center">
+                    <Image
+                      className="object-contain w-full h-full"
+                      src={
+                        pokemon.sprites.other?.dream_world?.front_default ||
+                        pokemon.sprites.front_default
+                      }
+                      alt={pokemon.name}
+                      priority
+                      width={160}
+                      height={160}
+                    />
+                  </div>
                   <p className="text-xs mt-3 mb-1 text-center">
                     No . {pokemon.id}
                   </p>

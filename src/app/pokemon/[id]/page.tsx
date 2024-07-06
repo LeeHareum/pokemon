@@ -23,7 +23,7 @@ const PokemonDetailPage = async ({ params }: PokemonDetailProps) => {
           <div className="md:flex-shrink-0 flex items-center justify-center">
             <Image
               className="m-8 object-cover"
-              src={pokemonDetails.sprites.front_default}
+              src={pokemonDetails.sprites.other.home.front_default}
               alt={pokemonDetails.name}
               priority
               width={270}
